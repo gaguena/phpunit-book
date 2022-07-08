@@ -8,14 +8,15 @@ use App\Model\People;
 
 $controller = new PeopleController();
 
-parse_str(file_get_contents("php://input"),$request);
-
-var_dump($request);
-
 switch ($_SERVER['REQUEST_METHOD']) {
   case 'GET':
     {
-      $res = $controller->get($_GET);
+      if ($_GET['delete'] == 'yes') {
+        $res = $controller->remove($_GET['code']);
+        echo result($res);
+        break;
+      }
+      $res = $controller->get($_GET['code']);
       echo result($res);
       break;
     }
@@ -25,14 +26,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
       echo result($res);
       break;
     }
-  case 'PUT':
-    {
-      $res = $controller->create($_);
-      echo result($res);
-      break;
-    }
-  case 'DELETE':
-    $res = $controller->create($_POST);
-    echo result($res);
-    break;
 }

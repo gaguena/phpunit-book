@@ -6,8 +6,5 @@
     "psr-4": {
       "App\\": "src"
     }
-  },
-  "require": {
-    "phpcollection/phpcollection": "^0.6.0"
   }
 }

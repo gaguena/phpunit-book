@@ -18,6 +18,11 @@ class PeopleController
     return $this->peopleService->get($code);
   }
   
+  public function remove($code)
+  {
+    return $this->peopleService->remove($code);
+  }
+  
   public function create($request)
   {
     return $this->peopleService->create($people);
